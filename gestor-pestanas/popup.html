@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Gestor de Pestañas</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <h1>Gestor de Pestañas</h1>
+    <span id="count" class="pill">0 pestañas</span>
+  </header>
+
+  <section class="actions">
+    <button data-action="group-topic" class="primary">Agrupar por tema</button>
+    <button data-action="group-domain">Agrupar por dominio</button>
+    <button data-action="ungroup">Desagrupar</button>
+    <button data-action="duplicates">Cerrar duplicadas</button>
+  </section>
+
+  <section class="row">
+    <button data-action="inactive">Cerrar inactivas de más de</button>
+    <select id="inactive-days">
+      <option value="1">1 día</option>
+      <option value="3" selected>3 días</option>
+      <option value="7">7 días</option>
+      <option value="14">14 días</option>
+    </select>
+  </section>
+
+  <p id="status" role="status"></p>
+
+  <details open>
+    <summary>Pestañas abiertas</summary>
+    <input id="search" type="search" placeholder="Buscar por título o dirección…" autocomplete="off">
+    <ul id="tab-list" class="list"></ul>
+  </details>
+
+  <details>
+    <summary>Sesiones guardadas</summary>
+    <form id="save-form" class="row">
+      <input id="session-name" type="text" placeholder="Nombre (ej. Trabajo)" required>
+      <button type="submit" class="primary">Guardar ventana</button>
+    </form>
+    <ul id="session-list" class="list"></ul>
+  </details>
+
+  <details>
+    <summary>Ajustes</summary>
+    <label class="check">
+      <input id="auto-close" type="checkbox">
+      Cerrar automáticamente las pestañas inactivas
+    </label>
+    <label class="row">
+      Después de
+      <input id="auto-days" type="number" min="1" max="60" value="3">
+      días sin usarlas
+    </label>
+    <p class="hint">Antes de cerrarlas se guardan en Sesiones, así puedes recuperarlas.</p>
+    <p class="hint">Atajos: <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>G</kbd> agrupa por tema · <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>D</kbd> cierra duplicadas</p>
+  </details>
+
+  <script type="module" src="popup.js"></script>
+</body>
+</html>
