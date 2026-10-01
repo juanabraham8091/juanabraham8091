@@ -1,6 +1,21 @@
 # Gestor de Pestañas Inteligente
 
-Extensión de Chrome (Manifest V3) para poner orden cuando tienes demasiadas pestañas abiertas.
+Extensión de Chrome para poner orden cuando tienes demasiadas pestañas abiertas: las agrupa por tema, cierra las duplicadas y las inactivas, y guarda sesiones de trabajo con nombre.
+
+### [⬇️ Descargar la extensión (.zip)](https://github.com/juanabraham8091/juanabraham8091/raw/main/gestor-pestanas/gestor-pestanas.zip)
+
+<img src="captura.png" alt="Ventana de la extensión Gestor de Pestañas" width="380">
+
+## Instalación (2 minutos)
+
+1. **Descarga** el archivo con el enlace de arriba.
+2. **Descomprímelo.** Obtendrás una carpeta llamada `gestor-pestanas`.
+3. En Chrome, escribe `chrome://extensions` en la barra de direcciones y pulsa Enter.
+4. Activa el **Modo de desarrollador** (interruptor arriba a la derecha).
+5. Pulsa **Cargar descomprimida** y selecciona la carpeta `gestor-pestanas`, la que contiene el archivo `manifest.json`.
+6. Pulsa el icono de la pieza de puzle 🧩 junto a la barra de direcciones y fija **Gestor de Pestañas** para tenerla siempre a mano.
+
+Funciona también en Edge, Brave y otros navegadores basados en Chromium.
 
 ## Funciones
 
@@ -15,28 +30,20 @@ Extensión de Chrome (Manifest V3) para poner orden cuando tienes demasiadas pes
 - **Contador** de pestañas en el icono, que se pone en rojo cuando pasas de 30.
 - **Atajos de teclado**: `Alt+Shift+G` agrupa por tema y `Alt+Shift+D` cierra duplicadas.
 
-## Instalación
+## Privacidad
 
-1. Descarga o clona este repositorio.
-2. Abre `chrome://extensions` en Chrome.
-3. Activa el **Modo de desarrollador** (arriba a la derecha).
-4. Pulsa **Cargar descomprimida** y elige la carpeta `gestor-pestanas`.
-5. Fija la extensión en la barra de Chrome (icono de la pieza de puzle) para tenerla a mano.
+Todo se queda en tu navegador (`chrome.storage.local`). La extensión no envía datos a ningún servidor y no necesita acceso al contenido de las páginas, solo a la lista de pestañas.
 
-## Personalizar los temas
+## Detalles técnicos
 
-Los sitios de cada tema están en la lista `TOPICS` de [`tabs.js`](tabs.js). Puedes añadir dominios o crear temas nuevos. Los colores válidos son `grey`, `blue`, `red`, `yellow`, `green`, `pink`, `purple`, `cyan` y `orange`.
-
-## Archivos
+Hecha con Manifest V3 y JavaScript puro, sin dependencias ni paso de compilación.
 
 | Archivo | Qué hace |
 |---|---|
-| `manifest.json` | Configuración y permisos de la extensión |
+| `manifest.json` | Configuración y permisos (`tabs`, `tabGroups`, `storage`, `alarms`) |
 | `tabs.js` | Lógica compartida: agrupar, cerrar, sesiones y ajustes |
 | `background.js` | Service worker: contador, limpieza automática y atajos |
-| `popup.html` / `popup.css` / `popup.js` | Ventana que se abre al pulsar el icono |
+| `popup.html` / `popup.css` / `popup.js` | Ventana que se abre al pulsar el icono, con modo claro y oscuro |
 | `icons/` | Iconos de la extensión |
 
-## Privacidad
-
-Todo se queda en tu navegador (`chrome.storage.local`). La extensión no envía datos a ningún servidor.
+Para añadir sitios a un tema o crear temas nuevos, edita la lista `TOPICS` de [`tabs.js`](tabs.js). Los colores válidos son `grey`, `blue`, `red`, `yellow`, `green`, `pink`, `purple`, `cyan` y `orange`.
